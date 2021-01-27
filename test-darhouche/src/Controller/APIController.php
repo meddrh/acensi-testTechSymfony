@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Department;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,7 @@ use Swagger\Annotations as SWG;
 class APIController extends AbstractController
 {
     /**
-     * @Route("/students/list", name="liste", methods={"GET"})
+     * @Route("/students/list/{id}", name="liste", methods={"GET"})
      * @SWG\Response(
      *     response=200,
      *     description="Returns all students",
@@ -34,10 +35,10 @@ class APIController extends AbstractController
      * @SWG\Tag(name="rewards")
      * @Security(name="Bearer")
      */
-    public function index(StudentRepository $studentsRepo): Response
+    public function index(StudentRepository $studentsRepo, Department $department): Response
     {
         // On récupère la liste des etudiants
-        $articles = $studentsRepo->findAll();
+        $articles = $studentsRepo->findStudentsByDepart($department);
 
         // On spécifie qu'on utilise l'encodeur JSON
         $encoders = [new JsonEncoder()];

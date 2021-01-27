@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\StudentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Nelmio\ApiDocBundle\Annotation\Model;
-
+use Swagger\Annotations as SWG;
 /**
  * @ORM\Entity(repositoryClass=StudentRepository::class)
  */
