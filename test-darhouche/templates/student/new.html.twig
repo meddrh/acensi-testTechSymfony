@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}New Student{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="pb-3">Create new Student</h1>
+
+        <a class="btn btn-outline-info"  href="{{ path('student_index') }}">Retour à la liste d'étudiant</a>
+
+        {{ include('student/_form.html.twig') }}
+    </div>
+
+
+{% endblock %}
