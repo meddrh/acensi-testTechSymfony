@@ -34,7 +34,7 @@ class Student
 
     /**
      * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="students")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $department;
 
