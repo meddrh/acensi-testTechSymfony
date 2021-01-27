@@ -3,37 +3,43 @@
 {% block title %}Student{% endblock %}
 
 {% block body %}
-    <h1>Student</h1>
+    <div class="container">
+        <h1>Student</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Firs Name</th>
-                <th>Last name</th>
-                <th>Numero etudiant</th>
-                <th>Actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Student number</th>
+                <th scope="col">Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for student in students %}
-            <tr>
-                <td>{{ student.id }}</td>
-                <td>{{ student.FirstName }}</td>
-                <td>{{ student.LastName }}</td>
-                <td>{{ student.NumEtud }}</td>
-                <td>
-                    <a href="{{ path('student_show', {'id': student.id}) }}">Afficher</a>
-                    <a href="{{ path('student_edit', {'id': student.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucun étudiant n'existe</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                    <th scope="row">{{ student.id }}</th>
 
-    <a href="{{ path('student_new') }}">Creer un étudiant</a>
+                    <td>{{ student.FirstName }}</td>
+
+                    <td>{{ student.LastName }}</td>
+
+                    <td>{{ student.NumEtud }}</td>
+                    <td>
+                        <a class="btn btn-outline-info" href="{{ path('student_show', {'id': student.id}) }}">Afficher</a>
+                        <a class="btn btn-outline-warning" href="{{ path('student_edit', {'id': student.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun étudiant n'existe</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('student_new') }}">Creer un étudiant</a>
+    </div>
+
 {% endblock %}
